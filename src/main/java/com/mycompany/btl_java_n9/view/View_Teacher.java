@@ -280,6 +280,21 @@ public class View_Teacher extends javax.swing.JFrame {
 // Hàm nhấn vào nút tìm kiếm
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
         // TODO add your handling code here:
+// Lấy mã sv mà người dùng nhập vào và tìm trong danh sách sinh viên do giáo viên quản lí
+        String maSV = searchTextField.getText();
+        list = sinhvienteacherdta.docFile();
+        for(QuanLySV a : list){
+            if(a.getMaSV().equals(maSV)){
+// Tìm thấy thì gán maSV, tenSV, diem1 và diem2 vào các ô textField bên dưới
+                maSVTextField.setText(a.getMaSV());
+                tenSVTextField.setText(a.getTenSV());
+                diem1TextField.setText(String.valueOf(a.getDiem1()));
+                diem2TextField.setText(String.valueOf(a.getDiem2()));
+                soTietNghiTextField.setText(String.valueOf(a.getSoTietNghi()));
+            }
+        }
+// Gán lại ô tìm kiếm bằng ""
+        searchTextField.setText("");
 
     }//GEN-LAST:event_searchBtnActionPerformed
 
