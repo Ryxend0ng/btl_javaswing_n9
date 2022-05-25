@@ -28,7 +28,9 @@ public class SinhVien_HoSo implements Serializable{
         this.khoa = khoa;
         this.lop = lop;
     }
-
+public SinhVien_HoSo(){
+    
+}
     public String getMasv() {
         return masv;
     }
