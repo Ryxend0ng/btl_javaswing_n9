@@ -295,13 +295,34 @@ public class View_Teacher extends javax.swing.JFrame {
         }
 // Gán lại ô tìm kiếm bằng ""
         searchTextField.setText("");
-
     }//GEN-LAST:event_searchBtnActionPerformed
 
 // Hàm nhấn nút nhập
     private void entryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entryBtnActionPerformed
         // TODO add your handling code here:
-
+//Lấy maSV, diem1, diem2 trong các ô textField
+        String maSV = maSVTextField.getText();
+        float diem1 = Float.parseFloat(diem1TextField.getText());
+        float diem2 = Float.parseFloat(diem2TextField.getText());
+        int soTietNghi = Integer.parseInt(soTietNghiTextField.getText());
+        list = sinhvienteacherdta.docFile();
+// Tìm kiếm sinh viên trong file quản lí điểm của giáo viên
+        for(QuanLySV a : list){
+// Tìm thấy thì set lại diem1 và diem2 thành điểm mà giáo viên vừa nhập
+            if(a.getMaSV().equals(maSV)){
+                a.setDiem1(diem1);
+                a.setDiem2(diem2);
+                a.setSoTietNghi(soTietNghi);
+            }
+        }
+// ghi lại file, gọi hàm showTable và gán lại giá trị các ô textFiled bằng ""
+        sinhvienteacherdta.ghiFile(list);
+        showTable();
+        maSVTextField.setText("");
+        tenSVTextField.setText("");
+        diem1TextField.setText("");
+        diem2TextField.setText("");
+        soTietNghiTextField.setText("");
     }//GEN-LAST:event_entryBtnActionPerformed
 
 // Hàm nhấn nút next
