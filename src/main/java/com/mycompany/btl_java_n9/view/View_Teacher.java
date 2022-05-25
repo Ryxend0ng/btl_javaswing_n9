@@ -27,8 +27,8 @@ public class View_Teacher extends javax.swing.JFrame {
         teachercontroller.chuyenDuLieu();
 // Gọi hàm hiển thị bảng
         showTable();
+ 
     }
-    
  
 // Hàm hiển thị bảng
     void showTable(){
@@ -41,6 +41,7 @@ public class View_Teacher extends javax.swing.JFrame {
         dtm.addColumn("Tên SV");
         dtm.addColumn("Điểm 1");
         dtm.addColumn("Điểm 2");
+        dtm.addColumn("Số tiết nghỉ");
         dtm.addColumn("Trạng Thái");
 // Nếu danh sách khác null thì thực hiện tiếp
         if(list != null){
@@ -48,13 +49,13 @@ public class View_Teacher extends javax.swing.JFrame {
             if(k<list.size()-10){
                 for(int i=k; i< k+10; i++){
                     QuanLySV a = list.get(i);
-                    dtm.addRow(new Object[]{a.getMaSV(), a.getTenSV(),a.getDiem1() > 0 ? a.getDiem1():null ,a.getDiem2() > 0 ? a.getDiem2():null , (a.getDiem1() + a.getDiem2())/2 >= 4? "Đạt": "Không đạt"});
+                    dtm.addRow(new Object[]{a.getMaSV(), a.getTenSV(),a.getDiem1() > 0 ? a.getDiem1():null ,a.getDiem2() > 0 ? a.getDiem2():null ,a.getSoTietNghi(), ((a.getDiem1() + a.getDiem2())/2 >= 4 && a.getSoTietNghi() < 10 )? "Đạt": "Không đạt"});
                 }
             }
             else{
                 for(int i=k; i< list.size(); i++){
                     QuanLySV a = list.get(i);
-                    dtm.addRow(new Object[]{a.getMaSV(), a.getTenSV(),a.getDiem1() > 0 ? a.getDiem1():null ,a.getDiem2() > 0 ? a.getDiem2():null , (a.getDiem1() + a.getDiem2())/2 >= 4? "Đạt": "Không đạt"});
+                    dtm.addRow(new Object[]{a.getMaSV(), a.getTenSV(),a.getDiem1() > 0 ? a.getDiem1():null ,a.getDiem2() > 0 ? a.getDiem2():null ,a.getSoTietNghi(), ((a.getDiem1() + a.getDiem2())/2 >= 4 && a.getSoTietNghi() < 10 )? "Đạt": "Không đạt"});
                 }
             }
         }
@@ -86,6 +87,8 @@ public class View_Teacher extends javax.swing.JFrame {
         prevBtn = new javax.swing.JButton();
         nextBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        soTietNghiTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Teacher");
@@ -105,13 +108,13 @@ public class View_Teacher extends javax.swing.JFrame {
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Mã SV", "Tên SV", "Điểm 1", "Điểm 2", "Trạng Thái"
+                "Mã SV", "Tên SV", "Điểm 1", "Điểm 2", "So Tiet Nghi", "Trạng Thái"
             }
         ));
         jScrollPane1.setViewportView(table);
@@ -154,6 +157,8 @@ public class View_Teacher extends javax.swing.JFrame {
 
         jLabel2.setText("Nhập mã sv xong click 'Tìm kiếm' hoặc click vào tên sinh viên trong bảng để nhập điểm");
 
+        jLabel3.setText("Số tiết nghỉ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -169,32 +174,36 @@ public class View_Teacher extends javax.swing.JFrame {
                         .addGap(185, 185, 185)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(tenSVLabel)
-                                .addComponent(maSVLabel))
-                            .addComponent(diem1Label)
-                            .addComponent(diem2Label))
-                        .addGap(54, 54, 54)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(maSVTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
-                            .addComponent(tenSVTextField)
-                            .addComponent(diem1TextField)
-                            .addComponent(diem2TextField))
-                        .addGap(46, 46, 46)
-                        .addComponent(entryBtn))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(prevBtn)
-                        .addGap(380, 380, 380)
-                        .addComponent(nextBtn)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(prevBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(nextBtn))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(tenSVLabel)
+                                        .addComponent(maSVLabel))
+                                    .addComponent(diem1Label)
+                                    .addComponent(diem2Label)
+                                    .addComponent(jLabel3))
+                                .addGap(54, 54, 54)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(maSVTextField)
+                                    .addComponent(tenSVTextField)
+                                    .addComponent(diem1TextField)
+                                    .addComponent(diem2TextField, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                                    .addComponent(soTietNghiTextField))
+                                .addGap(37, 37, 37)
+                                .addComponent(entryBtn)
+                                .addGap(140, 140, 140)))))
+                .addContainerGap(32, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(59, 59, 59))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,12 +217,12 @@ public class View_Teacher extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(prevBtn)
                     .addComponent(nextBtn))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(maSVLabel)
                     .addComponent(maSVTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -228,10 +237,14 @@ public class View_Teacher extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(diem2Label)
+                    .addComponent(diem2TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(diem2TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(soTietNghiTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(entryBtn)))
-                .addContainerGap())
+                .addGap(34, 34, 34))
         );
 
         pack();
@@ -240,24 +253,24 @@ public class View_Teacher extends javax.swing.JFrame {
 // Hàm nhấn vào nút tìm kiếm
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
         // TODO add your handling code here:
-
     }//GEN-LAST:event_searchBtnActionPerformed
 
 // Hàm nhấn nút nhập
     private void entryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entryBtnActionPerformed
         // TODO add your handling code here:
-
     }//GEN-LAST:event_entryBtnActionPerformed
 
 // Hàm nhấn nút next
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
         // TODO add your handling code here:
-
+// Tăng k lên 10 đơn vị
+        k += 10;
     }//GEN-LAST:event_nextBtnActionPerformed
 // Hàm nhấn nút prev
     private void prevBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevBtnActionPerformed
         // TODO add your handling code here:
-
+// Giảm k xuống 10 đơn vị
+        k -= 10;
     }//GEN-LAST:event_prevBtnActionPerformed
 
     /**
@@ -303,6 +316,7 @@ public class View_Teacher extends javax.swing.JFrame {
     private javax.swing.JButton entryBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel maSVLabel;
     private javax.swing.JTextField maSVTextField;
@@ -310,6 +324,7 @@ public class View_Teacher extends javax.swing.JFrame {
     private javax.swing.JButton prevBtn;
     private javax.swing.JButton searchBtn;
     private javax.swing.JTextField searchTextField;
+    private javax.swing.JTextField soTietNghiTextField;
     private javax.swing.JTable table;
     private javax.swing.JLabel tenSVLabel;
     private javax.swing.JTextField tenSVTextField;
