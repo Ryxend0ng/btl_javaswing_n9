@@ -29,30 +29,41 @@ public class HomThu extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/I_32/icons8-duolingo-logo-32.png"))); // NOI18N
         jLabel1.setText("Hom Thu");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 11, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(166, 166, 166)
-                .addComponent(jLabel1)
-                .addContainerGap(184, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(275, Short.MAX_VALUE))
-        );
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "MaSV", "Nội Dung"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(1).setMinWidth(400);
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(400);
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(400);
+        }
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 640, 270));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

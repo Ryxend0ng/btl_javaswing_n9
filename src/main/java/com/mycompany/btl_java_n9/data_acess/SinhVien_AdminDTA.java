@@ -48,9 +48,9 @@ public class SinhVien_AdminDTA {
     }
     public static void main(String[] args) {
         ArrayList<SinhVien_HoSo>list=new ArrayList<>();
-        list.add(new SinhVien_HoSo("2019600001","chinh","Nguyễn Văn Chính","10/09/2001","Thanh Hóa","CNTT","CNTT6"));
-        list.add(new SinhVien_HoSo("2019600002","dong","Nguyễn Văn Đông","12/05/2001","Thanh Hóa","CNTT","CNTT6"));
-        list.add(new SinhVien_HoSo("2019600003","hung","Nguyễn Văn Hưng","10/06/2001","Hà Nội","CNTT","CNTT6"));
+        list.add(new SinhVien_HoSo("2019600001","chinh","Nguyễn Văn Chính","10/09/2001","Hà Giang","CNTT","CNTT1"));
+        list.add(new SinhVien_HoSo("2019600002","dong","Nguyễn Văn Đông","12/05/2001","Hà Nam","CNTT","CNTT2"));
+        list.add(new SinhVien_HoSo("2019600003","hung","Nguyễn Văn Hưng","10/06/2001","Hà Nội","CNTT","CNTT1"));
         new SinhVien_AdminDTA().ghifile(list);
         ArrayList<SinhVien_HoSo>li=new SinhVien_AdminDTA().docfile();
         for (SinhVien_HoSo s : li) {

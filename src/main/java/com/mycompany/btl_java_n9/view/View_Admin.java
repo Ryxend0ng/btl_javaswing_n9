@@ -29,6 +29,7 @@ public class View_Admin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
          setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         bang.addTab("Xin Chao", new XinChao() );
+        
     }
 
     /**
@@ -62,6 +63,7 @@ public class View_Admin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Admin");
+        setPreferredSize(new java.awt.Dimension(800, 550));
 
         jToolBar1.setRollover(true);
         jToolBar1.setMaximumSize(new java.awt.Dimension(400, 32769));
@@ -187,16 +189,16 @@ public class View_Admin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 360, Short.MAX_VALUE))
+                .addGap(0, 499, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(220, 220, 220)
-                            .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(bang, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(220, 289, Short.MAX_VALUE)
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 101, Short.MAX_VALUE))
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(bang)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
