@@ -19,6 +19,7 @@ public class DangNhap extends javax.swing.JFrame {
     /**
      * Creates new form DangNhap
      */
+    public static SinhVien_HoSo sv=new SinhVien_HoSo();
     public DangNhap() {
         initComponents();
         setLocationRelativeTo(null);
@@ -94,6 +95,7 @@ public class DangNhap extends javax.swing.JFrame {
            ArrayList<SinhVien_HoSo> list=new SinhVien_AdminDTA().docfile();
            for (SinhVien_HoSo s : list) {
               if(user.getText().equals(s.getMasv())&&String.valueOf(pass.getPassword()).equals(s.getPass())){
+                 sv=new SinhVien_HoSo(s.getMasv(), s.getPass(), s.getHoten(), s.getNgaysinh(), s.getDiachi(), s.getKhoa(), s.getLop());
                   new View_Student().setVisible(true);dem=1;break;
               }
           }

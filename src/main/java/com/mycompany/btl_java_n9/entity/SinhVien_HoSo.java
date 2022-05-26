@@ -19,6 +19,7 @@ public class SinhVien_HoSo implements Serializable{
     private String diachi;
     private String khoa;
     private String lop;
+  // private String chuNhiem;
     public SinhVien_HoSo(String masv, String pass, String hoten, String ngaysinh, String diachi, String khoa, String lop) {
         this.masv = masv;
         this.pass = pass;
@@ -38,6 +39,14 @@ public SinhVien_HoSo(){
     public void setMasv(String masv) {
         this.masv = masv;
     }
+
+//    public void setChuNhiem(String chuNhiem) {
+//        this.chuNhiem = chuNhiem;
+//    }
+//
+//    public String getChuNhiem() {
+//        return chuNhiem;
+//    }
 
     public String getPass() {
         return pass;
