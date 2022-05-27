@@ -83,7 +83,7 @@ public class DangNhap extends javax.swing.JFrame {
           JOptionPane.showMessageDialog(this, "Ban chua nhap Pass.");
       }
       else if(user.getText().equals("Admin")&&String.valueOf(pass.getPassword()).equals("Admin")){
-         // new View_Admin().setVisible(true);
+          new View_Admin().setVisible(true);
           dispose();
       }
        else if(user.getText().equals("Teacher")&&String.valueOf(pass.getPassword()).equals("Teacher")){

@@ -32,9 +32,11 @@ public class SinhVien_HoSo implements Serializable{
         this.lop = lop;
     }
 
+
 public SinhVien_HoSo(){
     
 }
+
 
     public String getMasv() {
         return masv;
