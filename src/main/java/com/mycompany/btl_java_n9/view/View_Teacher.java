@@ -5,6 +5,7 @@
  */
 package com.mycompany.btl_java_n9.view;
 
+
 /**
  *
  * @author Administrator
@@ -17,6 +18,89 @@ public class View_Teacher extends javax.swing.JFrame {
     public View_Teacher() {
         initComponents();
          setLocationRelativeTo(null);
+
+import com.mycompany.btl_java_n9.controller.teacher.Teacher_Controller;
+import com.mycompany.btl_java_n9.data_acess.SinhVien_TeacherDTA;
+import com.mycompany.btl_java_n9.entity.QuanLySV;
+import java.util.ArrayList;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
+public class View_Teacher extends javax.swing.JFrame {
+    Teacher_Controller teachercontroller = new Teacher_Controller();
+    SinhVien_TeacherDTA sinhvienteacherdta = new SinhVien_TeacherDTA();
+    ArrayList<QuanLySV> list = new ArrayList<>();
+    int k =0;
+    
+    public View_Teacher() {
+        initComponents();
+        setLocationRelativeTo(null);
+// G�?i hàm chuyển dữ liệu
+        teachercontroller.chuyenDuLieu();
+// G�?i hàm hiển thị bảng
+        showTable();
+// G�?i hàm click vào tên sinh viên trong bảng
+        selectionTable();
+    }
+    
+// Hàm click vào tên sinh viên trong bảng
+    void selectionTable(){
+// Tạo danh sách lựa ch�?n của ngư�?i dùng tên bảng và thiết lập chỉ ch�?n 1.
+        ListSelectionModel listselectionmodel = table.getSelectionModel();
+        listselectionmodel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+// Thêm hàm lắng nghe sự kiện lựa ch�?n trên bảng
+        listselectionmodel.addListSelectionListener(new ListSelectionListener() {
+// Thêm hàm thay đổi giá trị lựa ch�?n
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+// Lấy danh sách các cột và các hàng lựa ch�?n
+                int[] rows = table.getSelectedRows();
+                int[] colums = table.getSelectedColumns();
+// Nếu có hàng được lựa ch�?n thì chạy tiếp
+                if(colums.length > 0 && rows.length >0){
+// Gán các giá trị từ bảng vào các ô TexField bên dưới
+                    maSVTextField.setText(String.valueOf(table.getValueAt(rows[0], 0)));
+                    tenSVTextField.setText(String.valueOf(table.getValueAt(rows[0], 1)));
+                    diem1TextField.setText(String.valueOf(table.getValueAt(rows[0], 2)));
+                    diem2TextField.setText(String.valueOf(table.getValueAt(rows[0], 3)));
+                    soTietNghiTextField.setText(String.valueOf(table.getValueAt(rows[0], 4)));
+                }
+            }
+        });
+    }
+    
+// Hàm hiển thị bảng
+    void showTable(){
+// Lấy danh sách sinh viên tưf file QuanLySV.dat
+        list = sinhvienteacherdta.docFile();
+        DefaultTableModel dtm = new DefaultTableModel();
+        table.setModel(dtm);
+// Thêm tiêu đ�? cho bảng
+        dtm.addColumn("Mã SV");
+        dtm.addColumn("Tên SV");
+        dtm.addColumn("�?iểm 1");
+        dtm.addColumn("�?iểm 2");
+        dtm.addColumn("Số tiết nghỉ");
+        dtm.addColumn("Trạng Thái");
+// Nếu danh sách khác null thì thực hiện tiếp
+        if(list != null){
+// if else hiển thị 10 sinh viên một lần
+            if(k<list.size()-10){
+                for(int i=k; i< k+10; i++){
+                    QuanLySV a = list.get(i);
+                    dtm.addRow(new Object[]{a.getMaSV(), a.getTenSV(),a.getDiem1() > 0 ? a.getDiem1():null ,a.getDiem2() > 0 ? a.getDiem2():null ,a.getSoTietNghi(), ((a.getDiem1() + a.getDiem2())/2 >= 4 && a.getSoTietNghi() < 10 )? "�?ạt": "Không đạt"});
+                }
+            }
+            else{
+                for(int i=k; i< list.size(); i++){
+                    QuanLySV a = list.get(i);
+                    dtm.addRow(new Object[]{a.getMaSV(), a.getTenSV(),a.getDiem1() > 0 ? a.getDiem1():null ,a.getDiem2() > 0 ? a.getDiem2():null ,a.getSoTietNghi(), ((a.getDiem1() + a.getDiem2())/2 >= 4 && a.getSoTietNghi() < 10 )? "�?ạt": "Không đạt"});
+                }
+            }
+        }
+>>>>>>> hung
     }
 
     /**
@@ -28,23 +112,264 @@ public class View_Teacher extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< HEAD
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Teacher");
 
+=======
+        jLabel1 = new javax.swing.JLabel();
+        searchTextField = new javax.swing.JTextField();
+        searchBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
+        maSVLabel = new javax.swing.JLabel();
+        tenSVLabel = new javax.swing.JLabel();
+        diem1Label = new javax.swing.JLabel();
+        diem2Label = new javax.swing.JLabel();
+        maSVTextField = new javax.swing.JTextField();
+        tenSVTextField = new javax.swing.JTextField();
+        diem1TextField = new javax.swing.JTextField();
+        diem2TextField = new javax.swing.JTextField();
+        entryBtn = new javax.swing.JButton();
+        prevBtn = new javax.swing.JButton();
+        nextBtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        soTietNghiTextField = new javax.swing.JTextField();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Teacher");
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Quản Lý �?iểm Sinh Viên");
+
+        searchTextField.setToolTipText("");
+
+        searchBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/I_16/icons8-search-16.png"))); // NOI18N
+        searchBtn.setText("Tìm kiếm");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
+
+        table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Mã SV", "Tên SV", "�?iểm 1", "�?iểm 2", "So Tiet Nghi", "Trạng Thái"
+            }
+        ));
+        jScrollPane1.setViewportView(table);
+
+        maSVLabel.setText("Mã SV");
+
+        tenSVLabel.setText("Tên SV");
+
+        diem1Label.setText("�?iểm 1");
+
+        diem2Label.setText("�?iểm 2");
+
+        maSVTextField.setEditable(false);
+
+        tenSVTextField.setEditable(false);
+
+        entryBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/I_16/icons8-edit-16.png"))); // NOI18N
+        entryBtn.setText("Nhập");
+        entryBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                entryBtnActionPerformed(evt);
+            }
+        });
+
+        prevBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/I_16/icons8-prev-16.png"))); // NOI18N
+        prevBtn.setText("Quay Lại");
+        prevBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prevBtnActionPerformed(evt);
+            }
+        });
+
+        nextBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/I_16/icons8-next-16.png"))); // NOI18N
+        nextBtn.setText("Tiếp");
+        nextBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Nhập mã sv xong click 'Tìm kiếm' hoặc click vào tên sinh viên trong bảng để nhập điểm");
+
+        jLabel3.setText("Số tiết nghỉ");
+
+>>>>>>> hung
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
+=======
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(154, 154, 154)
+                        .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(searchBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(185, 185, 185)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(prevBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(nextBtn))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(tenSVLabel)
+                                        .addComponent(maSVLabel))
+                                    .addComponent(diem1Label)
+                                    .addComponent(diem2Label)
+                                    .addComponent(jLabel3))
+                                .addGap(54, 54, 54)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(maSVTextField)
+                                    .addComponent(tenSVTextField)
+                                    .addComponent(diem1TextField)
+                                    .addComponent(diem2TextField, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                                    .addComponent(soTietNghiTextField))
+                                .addGap(37, 37, 37)
+                                .addComponent(entryBtn)
+                                .addGap(140, 140, 140)))))
+                .addContainerGap(32, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(59, 59, 59))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(searchBtn)
+                    .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(prevBtn)
+                    .addComponent(nextBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(maSVLabel)
+                    .addComponent(maSVTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tenSVLabel)
+                    .addComponent(tenSVTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(diem1Label)
+                    .addComponent(diem1TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(diem2Label)
+                    .addComponent(diem2TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(soTietNghiTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(entryBtn)))
+                .addGap(34, 34, 34))
+>>>>>>> hung
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD
+=======
+// Hàm nhấn vào nút tìm kiếm
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        // TODO add your handling code here:
+// Lấy mã sv mà ngư�?i dùng nhập vào và tìm trong danh sách sinh viên do giáo viên quản lí
+        String maSV = searchTextField.getText();
+        list = sinhvienteacherdta.docFile();
+        for(QuanLySV a : list){
+            if(a.getMaSV().equals(maSV)){
+// Tìm thấy thì gán maSV, tenSV, diem1 và diem2 vào các ô textField bên dưới
+                maSVTextField.setText(a.getMaSV());
+                tenSVTextField.setText(a.getTenSV());
+                diem1TextField.setText(String.valueOf(a.getDiem1()));
+                diem2TextField.setText(String.valueOf(a.getDiem2()));
+                soTietNghiTextField.setText(String.valueOf(a.getSoTietNghi()));
+            }
+        }
+// Gán lại ô tìm kiếm bằng ""
+        searchTextField.setText("");
+    }//GEN-LAST:event_searchBtnActionPerformed
+
+// Hàm nhấn nút nhập
+    private void entryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entryBtnActionPerformed
+        // TODO add your handling code here:
+//Lấy maSV, diem1, diem2 trong các ô textField
+        String maSV = maSVTextField.getText();
+        float diem1 = Float.parseFloat(diem1TextField.getText());
+        float diem2 = Float.parseFloat(diem2TextField.getText());
+        int soTietNghi = Integer.parseInt(soTietNghiTextField.getText());
+        list = sinhvienteacherdta.docFile();
+// Tìm kiếm sinh viên trong file quản lí điểm của giáo viên
+        for(QuanLySV a : list){
+// Tìm thấy thì set lại diem1 và diem2 thành điểm mà giáo viên vừa nhập
+            if(a.getMaSV().equals(maSV)){
+                a.setDiem1(diem1);
+                a.setDiem2(diem2);
+                a.setSoTietNghi(soTietNghi);
+            }
+        }
+// ghi lại file, g�?i hàm showTable và gán lại giá trị các ô textFiled bằng ""
+        sinhvienteacherdta.ghiFile(list);
+        showTable();
+        maSVTextField.setText("");
+        tenSVTextField.setText("");
+        diem1TextField.setText("");
+        diem2TextField.setText("");
+        soTietNghiTextField.setText("");
+    }//GEN-LAST:event_entryBtnActionPerformed
+
+// Hàm nhấn nút next
+    private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
+        // TODO add your handling code here:
+// Tăng k lên 10 đơn vị
+        k += 10;
+    }//GEN-LAST:event_nextBtnActionPerformed
+// Hàm nhấn nút prev
+    private void prevBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevBtnActionPerformed
+        // TODO add your handling code here:
+// Giảm k xuống 10 đơn vị
+        k -= 10;
+    }//GEN-LAST:event_prevBtnActionPerformed
+
+>>>>>>> hung
     /**
      * @param args the command line arguments
      */
@@ -81,5 +406,27 @@ public class View_Teacher extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
+=======
+    private javax.swing.JLabel diem1Label;
+    private javax.swing.JTextField diem1TextField;
+    private javax.swing.JLabel diem2Label;
+    private javax.swing.JTextField diem2TextField;
+    private javax.swing.JButton entryBtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel maSVLabel;
+    private javax.swing.JTextField maSVTextField;
+    private javax.swing.JButton nextBtn;
+    private javax.swing.JButton prevBtn;
+    private javax.swing.JButton searchBtn;
+    private javax.swing.JTextField searchTextField;
+    private javax.swing.JTextField soTietNghiTextField;
+    private javax.swing.JTable table;
+    private javax.swing.JLabel tenSVLabel;
+    private javax.swing.JTextField tenSVTextField;
+>>>>>>> hung
     // End of variables declaration//GEN-END:variables
 }

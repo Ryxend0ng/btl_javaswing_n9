@@ -5,6 +5,7 @@
  */
 package com.mycompany.btl_java_n9.view;
 
+<<<<<<< HEAD
 import com.mycompany.btl_java_n9.view.Panel_Admin.GioiThieu;
 import com.mycompany.btl_java_n9.view.Panel_Admin.HomThu;
 import com.mycompany.btl_java_n9.view.Panel_Admin.HuongDan;
@@ -15,6 +16,8 @@ import com.mycompany.btl_java_n9.view.Panel_Admin.XoaSV;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
+=======
+>>>>>>> hung
 /**
  *
  * @author Administrator
@@ -27,8 +30,11 @@ public class View_Admin extends javax.swing.JFrame {
     public View_Admin() {
         initComponents();
         setLocationRelativeTo(null);
+<<<<<<< HEAD
          setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         bang.addTab("Xin Chao", new XinChao() );
+=======
+>>>>>>> hung
     }
 
     /**
@@ -40,6 +46,7 @@ public class View_Admin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< HEAD
         bang = new javax.swing.JTabbedPane();
         jToolBar1 = new javax.swing.JToolBar();
         jSeparator4 = new javax.swing.JToolBar.Separator();
@@ -178,11 +185,16 @@ public class View_Admin extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
+=======
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Xin chao Admin");
+>>>>>>> hung
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,11 +225,19 @@ public class View_Admin extends javax.swing.JFrame {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(bang, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
+=======
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+>>>>>>> hung
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         bang.remove(0);
         bang.addTab("Thêm Sinh Viên", new ThemSV());
@@ -263,6 +283,8 @@ public class View_Admin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+=======
+>>>>>>> hung
     /**
      * @param args the command line arguments
      */
@@ -299,6 +321,7 @@ public class View_Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     private javax.swing.JTabbedPane bang;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -318,5 +341,7 @@ public class View_Admin extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator4;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JToolBar jToolBar1;
+=======
+>>>>>>> hung
     // End of variables declaration//GEN-END:variables
 }

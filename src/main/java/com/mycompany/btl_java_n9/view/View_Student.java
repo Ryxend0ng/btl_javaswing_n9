@@ -5,11 +5,14 @@
  */
 package com.mycompany.btl_java_n9.view;
 
+<<<<<<< HEAD
 import com.mycompany.btl_java_n9.entity.SinhVien_HoSo;
 import com.mycompany.btl_java_n9.view.Panel_Admin.XinChao;
 import com.mycompany.btl_java_n9.view.Panel_Student.GuiPhanHoi;
 import com.mycompany.btl_java_n9.view.Panel_Student.XemDiem;
 
+=======
+>>>>>>> hung
 /**
  *
  * @author Administrator
@@ -19,6 +22,7 @@ public class View_Student extends javax.swing.JFrame {
     /**
      * Creates new form View_Student
      */
+<<<<<<< HEAD
     public SinhVien_HoSo sv1=DangNhap.sv;
     public View_Student() {
         initComponents();
@@ -34,6 +38,13 @@ public class View_Student extends javax.swing.JFrame {
         txtLop.setText(sv1.getLop());
       
     }
+=======
+    public View_Student() {
+        initComponents();
+         setLocationRelativeTo(null);
+    }
+
+>>>>>>> hung
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,6 +54,7 @@ public class View_Student extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< HEAD
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -249,11 +261,16 @@ public class View_Student extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
+=======
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Student");
+>>>>>>> hung
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -271,11 +288,19 @@ public class View_Student extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+=======
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+>>>>>>> hung
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel8MouseClicked
@@ -296,6 +321,8 @@ public class View_Student extends javax.swing.JFrame {
          bang.addTab("Phản hồi", new GuiPhanHoi());
     }//GEN-LAST:event_jLabel9MouseClicked
 
+=======
+>>>>>>> hung
     /**
      * @param args the command line arguments
      */
@@ -332,6 +359,7 @@ public class View_Student extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     private javax.swing.JMenuItem Thoat;
     private javax.swing.JTabbedPane bang;
     private javax.swing.JButton jButton7;
@@ -356,5 +384,7 @@ public class View_Student extends javax.swing.JFrame {
     private javax.swing.JLabel txtHoten;
     private javax.swing.JLabel txtLop;
     private javax.swing.JLabel txtMaSv;
+=======
+>>>>>>> hung
     // End of variables declaration//GEN-END:variables
 }
