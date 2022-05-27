@@ -253,7 +253,7 @@ public class View_Admin extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         int ch=JOptionPane.showConfirmDialog(this, "Ban có chắc chắn muốn đăng xuất ?");
         if(ch==JOptionPane.YES_OPTION ){
-            new DangNhap().setVisible(true);
+         //   new DangNhap().setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
