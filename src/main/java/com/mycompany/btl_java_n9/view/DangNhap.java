@@ -87,7 +87,7 @@ public class DangNhap extends javax.swing.JFrame {
           dispose();
       }
        else if(user.getText().equals("Teacher")&&String.valueOf(pass.getPassword()).equals("Teacher")){
-         // new View_Teacher().setVisible(true);
+          new View_Teacher().setVisible(true);
           dispose();
       }
        else {
