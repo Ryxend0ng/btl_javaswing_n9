@@ -5,6 +5,7 @@
  */
 package com.mycompany.btl_java_n9.view;
 
+import com.mycompany.btl_java_n9.view.Panel_Teacher.View_DiemTP;
 import com.mycompany.btl_java_n9.data_acess.SinhVien_AdminDTA;
 import com.mycompany.btl_java_n9.entity.SinhVien_HoSo;
 import java.util.ArrayList;
@@ -86,7 +87,7 @@ public class DangNhap extends javax.swing.JFrame {
           dispose();
       }
        else if(user.getText().equals("Teacher")&&String.valueOf(pass.getPassword()).equals("Teacher")){
-          new View_Teacher().setVisible(true);
+          new View_DiemTP().setVisible(true);
           dispose();
       }
        else {
