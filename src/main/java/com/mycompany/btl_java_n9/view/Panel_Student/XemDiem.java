@@ -4,7 +4,9 @@
  */
 package com.mycompany.btl_java_n9.view.Panel_Student;
 
+import com.mycompany.btl_java_n9.controller.student.StudentController;
 import com.mycompany.btl_java_n9.entity.BangDiem;
+import com.mycompany.btl_java_n9.entity.QuanLySV;
 
 /**
  *
@@ -15,20 +17,20 @@ public class XemDiem extends javax.swing.JPanel {
     /**
      * Creates new form XemDiem
      */
-    public BangDiem bd=new BangDiem("2019","Dong",8f,8f,8f,"Đu dk");
+    public QuanLySV ql=new StudentController().getBangDiem();
     public XemDiem() {
         initComponents();
         showDl();
     }
     private void showDl(){
-        txtMaSv.setText(bd.getMaSv());
-        txtTenSv.setText(bd.getTenSv());
-        txtDiem1.setText(bd.getDiem1()+"");
-        txtDiem2.setText(bd.getDiem2()+"");
-        txtDiemThi.setText(bd.getDiemThi()+"");
-        txtDiemTrung.setText(((bd.getDiem1()+bd.getDiem2())/2+bd.getDiemThi())/2+"");
-        txtTrangThai.setText(bd.getTrangThai());
-        
+        txtMaSv.setText(ql.getMaSV());
+        txtTenSv.setText(ql.getTenSV());
+        txtDiem1.setText(ql.getDiem1()+"");
+        txtDiem2.setText(ql.getDiem2()+"");
+        txtDiemThi.setText("");
+        txtDiemTrung.setText(((ql.getDiem1()+ql.getDiem2())/2)+"");
+        txtTrangThai.setText(ql.isTrangThai()==true?"Đủ điều kiện":"Không Đủ điều kiện");
+        txtXepHang.setText(new StudentController().xepHang()+"");
     }
     /**
      * This method is called from within the constructor to initialize the form.
