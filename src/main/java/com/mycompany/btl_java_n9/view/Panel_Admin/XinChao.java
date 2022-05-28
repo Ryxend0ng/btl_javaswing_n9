@@ -33,18 +33,21 @@ public class XinChao extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(null);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/I_64/icons8-settings (1).gif"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, -1, -1));
+        add(jLabel1);
+        jLabel1.setBounds(120, 40, 200, 200);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Xin Chao Den Voi Phan Mem Quan Ly Sinh Vien");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
+        add(jLabel2);
+        jLabel2.setBounds(60, 250, 324, 17);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Ban đang đăng nhập với tư cách : ADMIN");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, -1, -1));
+        add(jLabel3);
+        jLabel3.setBounds(90, 280, 255, 17);
     }// </editor-fold>//GEN-END:initComponents
 
 

@@ -44,24 +44,29 @@ public class DangNhap extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Đăng nhập");
         setMinimumSize(new java.awt.Dimension(400, 320));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/I_32/icons8-log-in-32.png"))); // NOI18N
         jLabel1.setText("Đăng Nhập");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(130, 20, 124, 32);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/I_32/icons8-remove-32.png"))); // NOI18N
         jLabel2.setText("Pass:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, 50));
-        getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 190, 30));
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(50, 150, 72, 50);
+        getContentPane().add(user);
+        user.setBounds(140, 100, 190, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/I_32/icons8-person-32.png"))); // NOI18N
         jLabel3.setText("User:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 93, -1, 40));
-        getContentPane().add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 150, 30));
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(50, 93, 72, 40);
+        getContentPane().add(pass);
+        pass.setBounds(140, 160, 150, 30);
 
         jButton1.setText("Đăng Nhập");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -69,7 +74,8 @@ public class DangNhap extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 100, 30));
+        getContentPane().add(jButton1);
+        jButton1.setBounds(160, 220, 100, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
