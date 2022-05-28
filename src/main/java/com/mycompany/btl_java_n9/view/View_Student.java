@@ -9,6 +9,7 @@ import com.mycompany.btl_java_n9.controller.student.StudentController;
 import com.mycompany.btl_java_n9.entity.SinhVien_HoSo;
 import com.mycompany.btl_java_n9.view.Panel_Admin.XinChao;
 import com.mycompany.btl_java_n9.view.Panel_Student.GuiPhanHoi;
+import com.mycompany.btl_java_n9.view.Panel_Student.ThongTin;
 import com.mycompany.btl_java_n9.view.Panel_Student.XemDiem;
 import com.mycompany.btl_java_n9.view.Panel_Student.XinChaoStudent;
 
@@ -314,6 +315,8 @@ public class View_Student extends javax.swing.JFrame {
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         // TODO add your handling code here:
+          bang.remove(0);
+         bang.addTab("Thông tin", new ThongTin());
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked

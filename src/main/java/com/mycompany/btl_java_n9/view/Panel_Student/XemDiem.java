@@ -30,7 +30,7 @@ public class XemDiem extends javax.swing.JPanel {
         txtDiemThi.setText("");
         txtDiemTrung.setText(((ql.getDiem1()+ql.getDiem2())/2)+"");
         txtTrangThai.setText(ql.isTrangThai()==true?"Đủ điều kiện":"Không Đủ điều kiện");
-        txtXepHang.setText(new StudentController().xepHang()+"");
+        txtXepHang.setText(new StudentController().xepHang()+"/"+new StudentController().countSV());
     }
     /**
      * This method is called from within the constructor to initialize the form.

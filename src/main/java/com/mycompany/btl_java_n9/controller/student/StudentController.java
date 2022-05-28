@@ -59,4 +59,12 @@ public class StudentController {
         }
         return rank;
     }
+    public int countSV(){
+          List<QuanLySV> listQl=new SinhVien_TeacherDTA().docFile();
+          int count=0;
+        for(int i=0;i<listQl.size();i++){
+            count++;
+        }
+        return count;
+    }
 }
