@@ -6,6 +6,7 @@ package com.mycompany.btl_java_n9.controller.student;
 
 import com.mycompany.btl_java_n9.data_acess.SinhVien_TeacherDTA;
 import com.mycompany.btl_java_n9.entity.BangDiem;
+import com.mycompany.btl_java_n9.entity.QuanLyDiemThi;
 import com.mycompany.btl_java_n9.entity.QuanLySV;
 import com.mycompany.btl_java_n9.entity.SinhVien_HoSo;
 import com.mycompany.btl_java_n9.view.DangNhap;
@@ -24,7 +25,7 @@ public class StudentController {
     public QuanLySV getBangDiem(){
         SinhVien_HoSo sv=DangNhap.sv;
         QuanLySV ql=null;
-        List<QuanLySV> listQl=new SinhVien_TeacherDTA().docFile();
+        List<QuanLySV> listQl=new SinhVien_TeacherDTA().docFileQuanLySV();
         for(int i=0;i<listQl.size();i++){
             if(sv.getMasv().equals(listQl.get(i).getMaSV())){
                 ql=listQl.get(i);
@@ -38,7 +39,7 @@ public class StudentController {
          SinhVien_HoSo sv=DangNhap.sv;
          int rank=0;
           QuanLySV ql=null;
-        List<QuanLySV> listQl=new SinhVien_TeacherDTA().docFile();
+        List<QuanLySV> listQl=new SinhVien_TeacherDTA().docFileQuanLySV();
         for(int i=0;i<listQl.size();i++){
             if(sv.getMasv().equals(listQl.get(i).getMaSV())){
                 ql=listQl.get(i);
@@ -58,5 +59,27 @@ public class StudentController {
             }
         }
         return rank;
+    }
+    public int count(){
+         List<QuanLySV> listQl=new SinhVien_TeacherDTA().docFileQuanLySV();
+         int count=0;
+         for(int i=0;i<listQl.size();i++){
+          count ++;
+           
+        }
+         return count;
+    }
+    public QuanLyDiemThi getQuanLyDiemThi(){
+         SinhVien_HoSo sv=DangNhap.sv;
+        QuanLyDiemThi ql=null;
+        List<QuanLyDiemThi> listQl=new SinhVien_TeacherDTA().docFileQuanLyDiemThi();
+        for(int i=0;i<listQl.size();i++){
+            if(sv.getMasv().equals(listQl.get(i).getMaSV())){
+                ql=listQl.get(i);
+               
+            } else {
+            }
+        }
+        return ql;
     }
 }
