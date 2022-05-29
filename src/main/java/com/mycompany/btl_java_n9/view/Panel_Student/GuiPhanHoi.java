@@ -4,8 +4,19 @@
  */
 package com.mycompany.btl_java_n9.view.Panel_Student;
 
+import com.mycompany.btl_java_n9.controller.student.StudentController;
+import com.mycompany.btl_java_n9.data_acess.AdminNhanPhanHoi_DTA;
+import com.mycompany.btl_java_n9.data_acess.GiaoVienNhanPhanHoi_DTA;
+import com.mycompany.btl_java_n9.data_acess.SinhVien_AdminDTA;
+import com.mycompany.btl_java_n9.entity.PhanHoi;
+import com.mycompany.btl_java_n9.entity.QuanLySV;
+import com.mycompany.btl_java_n9.entity.SinhVien_HoSo;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,10 +27,14 @@ public class GuiPhanHoi extends javax.swing.JPanel {
     /**
      * Creates new form GuiPhanHoi
      */
+     StudentController sc=new StudentController();
+    public QuanLySV ql=sc.getBangDiem();
+    public SinhVien_HoSo sv=sc.getSinhVien();
+    public List<PhanHoi> listPh=new AdminNhanPhanHoi_DTA().docfile()!=null?new AdminNhanPhanHoi_DTA().docfile():new ArrayList<>();
     public DefaultComboBoxModel cb=new DefaultComboBoxModel();
     public GuiPhanHoi() {
         initComponents();
-        cb=(DefaultComboBoxModel) txtCombox.getModel();
+        cb=(DefaultComboBoxModel) txtNguoiNhan.getModel();
         cb.removeAllElements();
         cb.addElement("ADMIN");
         cb.addElement("Giáo viên");
@@ -35,26 +50,37 @@ public class GuiPhanHoi extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        txtCombox = new javax.swing.JComboBox<>();
+        txtNguoiNhan = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
+        txtLyDo = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtCombox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        txtNguoiNhan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/I_16/icons8-info-popup-16.png"))); // NOI18N
         jLabel4.setText("Lý do:");
+        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/I_16/icons8-info-popup-16 (1).png"))); // NOI18N
         jLabel5.setText("Gửi phản hồi");
 
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/I_16/icons8-next-16.png"))); // NOI18N
         jLabel6.setText("Đến");
+        jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/I_16/icons8-ok-16.png"))); // NOI18N
         jButton2.setText("Gửi");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -64,7 +90,7 @@ public class GuiPhanHoi extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(143, 143, 143)
-                        .addComponent(txtCombox, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtNguoiNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -74,7 +100,7 @@ public class GuiPhanHoi extends javax.swing.JPanel {
                             .addComponent(jButton2)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtLyDo, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel6)))))
                 .addContainerGap(118, Short.MAX_VALUE))
         );
@@ -85,15 +111,15 @@ public class GuiPhanHoi extends javax.swing.JPanel {
                 .addComponent(jLabel5)
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCombox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNguoiNhan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLyDo, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -113,6 +139,37 @@ public class GuiPhanHoi extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        try{
+        int checkOption=JOptionPane.showConfirmDialog(null, "Xác  nhận gửi?","Xác nhận",JOptionPane.YES_NO_OPTION);
+        System.out.println(checkOption);
+        
+        if(checkOption==0){
+           
+           PhanHoi ph=new PhanHoi();
+           ph.setNguoiNhan(txtNguoiNhan.getSelectedItem().toString());
+           ph.setNguoiGui(sv.getMasv());
+           ph.setNgayGui(LocalDate.now().toString());
+           ph.setNoiDung(txtLyDo.getText());
+           listPh.add(ph);
+            System.out.println(ph.getNguoiNhan());
+           if(ph.getNguoiNhan().equals("ADMIN")){
+            new AdminNhanPhanHoi_DTA().ghifile((ArrayList<PhanHoi>)listPh);
+           }else if(ph.getNguoiNhan().equals("Giáo viên")){
+               new GiaoVienNhanPhanHoi_DTA().ghifile((ArrayList<PhanHoi>)listPh);
+           }
+            JOptionPane.showConfirmDialog(null, "Bạn đã gửi phản hồi thành công?","Thành công",JOptionPane.DEFAULT_OPTION);
+            
+        }else{
+            JOptionPane.showConfirmDialog(null, "Lỗi trong quá trình gửi?","Báo lỗi",JOptionPane.DEFAULT_OPTION);
+        }
+        }catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showConfirmDialog(null, "Lỗi trong quá trình gửi?","Báo lỗi",JOptionPane.DEFAULT_OPTION);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
@@ -120,7 +177,7 @@ public class GuiPhanHoi extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JComboBox<String> txtCombox;
+    private javax.swing.JTextField txtLyDo;
+    private javax.swing.JComboBox<String> txtNguoiNhan;
     // End of variables declaration//GEN-END:variables
 }

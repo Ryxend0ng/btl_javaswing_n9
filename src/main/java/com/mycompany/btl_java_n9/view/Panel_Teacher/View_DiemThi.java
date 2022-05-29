@@ -7,6 +7,7 @@ import com.mycompany.btl_java_n9.controller.teacher.Teacher_Controller;
 import com.mycompany.btl_java_n9.data_acess.SinhVien_TeacherDTA;
 import com.mycompany.btl_java_n9.entity.QuanLyDiemThi;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -56,10 +57,13 @@ public class View_DiemThi extends javax.swing.JPanel {
                 for(int i=k; i< list.size(); i++){
                     QuanLyDiemThi a = list.get(i);
                     dtm.addRow(new Object[]{a.getMaSV(), a.getTenSV(),a.getDiemTP(),a.getDiemThi() > 0 ? a.getDiemThi():null ,a.getDiemTB(), a.getDiemChu()});
+                }
             }
         }
+        else{
+            JOptionPane.showMessageDialog(this, "Không có sinh viên nào trong danh sách");
+        }
     }
-}
     
 // Hàm click vào tên sinh viên trong bảng
     void selectionTable(){
@@ -176,24 +180,26 @@ public class View_DiemThi extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(prevBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(nextBtn)))
-                .addGap(38, 38, 38))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
+                        .addGap(95, 95, 95)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel5)
                             .addComponent(jLabel4))
                         .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(maSVTextField)
-                            .addComponent(tenSVTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                            .addComponent(diemThiTextField))
-                        .addGap(18, 18, 18)
-                        .addComponent(nhapBtn))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(nhapBtn)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(maSVTextField)
+                                    .addComponent(tenSVTextField)
+                                    .addComponent(diemThiTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(nextBtn)))))
+                .addGap(38, 38, 38))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(96, 96, 96)
                         .addComponent(jLabel2))
@@ -219,25 +225,29 @@ public class View_DiemThi extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(prevBtn)
-                    .addComponent(nextBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(maSVTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(tenSVTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(diemThiTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nhapBtn))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(prevBtn)
+                            .addComponent(nextBtn)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(maSVTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(tenSVTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(diemThiTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(38, 38, 38)
+                .addComponent(nhapBtn)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -262,24 +272,33 @@ public class View_DiemThi extends javax.swing.JPanel {
         // TODO add your handling code here:
         //Lấy maSV, diem thi trong các ô textField
         String maSV = maSVTextField.getText();
-        float diemThi = Float.parseFloat(diemThiTextField.getText());
-
-        list = sinhvienteacherdta.docFileQuanLyDiemThi();
-        // Tìm kiếm sinh viên trong file quản lí điểm của giáo viên
-        for(QuanLyDiemThi a : list){
-            // Tìm thấy thì set lại diem1 và diem2 thành điểm mà giáo viên vừa nhập
-            if(a.getMaSV().equals(maSV)){
-                a.setDiemThi(diemThi);
-                a.setDiemTB(a.tinhDiemTB());
-                a.setDiemChu(a.tinhDiemChu());
+        try{
+            float diemThi = Float.parseFloat(diemThiTextField.getText());
+            if(diemThi>10 || diemThi <0){
+                JOptionPane.showMessageDialog(this, "Điểm phải nằm trong khoảng 0-10", "Warning", JOptionPane.WARNING_MESSAGE);
             }
+            else{
+                list = sinhvienteacherdta.docFileQuanLyDiemThi();
+                // Tìm kiếm sinh viên trong file quản lí điểm của giáo viên
+                for(QuanLyDiemThi a : list){
+                    // Tìm thấy thì set lại diem1 và diem2 thành điểm mà giáo viên vừa nhập
+                    if(a.getMaSV().equals(maSV)){
+                        a.setDiemThi(diemThi);
+                        a.setDiemTB(a.tinhDiemTB());
+                        a.setDiemChu(a.tinhDiemChu());
+                    }
+                }
+                // ghi lại file, gọi hàm showTable và gán lại giá trị các ô textFiled bằng ""
+                sinhvienteacherdta.ghiFileQuanLyDiemThi(list);
+                showTable();
+                maSVTextField.setText("");
+                tenSVTextField.setText("");
+                diemThiTextField.setText("");
+            }
+        } catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Điểm phải là số", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        // ghi lại file, gọi hàm showTable và gán lại giá trị các ô textFiled bằng ""
-        sinhvienteacherdta.ghiFileQuanLyDiemThi(list);
-        showTable();
-        maSVTextField.setText("");
-        tenSVTextField.setText("");
-        diemThiTextField.setText("");
+        
     }//GEN-LAST:event_nhapBtnActionPerformed
 
     private void prevBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevBtnActionPerformed

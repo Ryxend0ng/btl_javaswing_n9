@@ -69,6 +69,7 @@ public class Teacher_Controller {
     
 // Hàm chuyển dữ liệu từ file SinhVien_HoSo.dat của admin sang file QuanLySV.dat của teacher
     public void chuyenDuLieuDiemTP_DiemThi(){
+        ArrayList<QuanLyDiemThi> listDiemThi2 = new ArrayList<>();
 // Khởi tạo new file SinhVien_TeacherDTA
         SinhVien_TeacherDTA sinhvienteacherdta = new SinhVien_TeacherDTA();
 // Gán list1 và listDiemThi lần lượt bằng dữ liệu trong file QuanLySV.dat và QuanLyDiemThi.dat
@@ -78,7 +79,9 @@ public class Teacher_Controller {
         if(listDiemThi1 == null && list1 != null){
 // Duyệt danh sách sinh viên do admin quản lí, lấy maSV và tenSV thêm vào danh sách sinh viên do giáo viên quản lí
             for(QuanLySV sv : list1){
-                listDiemThi.add(new QuanLyDiemThi(sv.getMaSV(), sv.getTenSV(), Math.round((sv.getDiem1() + sv.getDiem1())/2)));
+                if(sv.isTrangThai()){
+                    listDiemThi.add(new QuanLyDiemThi(sv.getMaSV(), sv.getTenSV(), Math.round((sv.getDiem1() + sv.getDiem1())/2)));
+                }
             }
         }
 // Nếu file QuanLyDiemThi.dat đã có dữ liệu
@@ -91,7 +94,7 @@ public class Teacher_Controller {
             for(QuanLySV sv : list1){
                 listMaSVDiemTP.add(sv.getMaSV());
 // Kiểm tra xem có sinh viên nào trong danh sách diem thành phần mà chưa được thêm vào danh sách điểm thi hay không(trường hợp admin thêm mới sinh viên)
-                if(!listMaSVDiemThi.contains(sv.getMaSV())){
+                if(!listMaSVDiemThi.contains(sv.getMaSV()) && sv.isTrangThai()){
 // Thêm sinh viên đó vào danh sách sv do giáo viên quản lí
                     listDiemThi1.add(new QuanLyDiemThi(sv.getMaSV(), sv.getTenSV(), Math.round((sv.getDiem1() + sv.getDiem1())/2)));
                 }
@@ -103,11 +106,21 @@ public class Teacher_Controller {
                     listDiemThi1.remove(sv);
                 }
             }
-            for(QuanLySV sv : list1){
-                for(QuanLyDiemThi svDiemThi : listDiemThi1){
-                    if(sv.getMaSV().equals(svDiemThi.getMaSV()) && Math.round((sv.getDiem1() + sv.getDiem1())/2) != svDiemThi.getDiemTP()){
-                        svDiemThi.setDiemTP(Math.round((sv.getDiem1() + sv.getDiem1())/2));
+            if(list1 != null && listDiemThi1 != null){
+                for(QuanLySV sv : list1){
+                    for(QuanLyDiemThi svDiemThi : listDiemThi1){
+                        if(sv.getMaSV().equals(svDiemThi.getMaSV()) && Math.round((sv.getDiem1() + sv.getDiem1())/2) != svDiemThi.getDiemTP()){
+                            svDiemThi.setDiemTP(Math.round((sv.getDiem1() + sv.getDiem1())/2));
+                        }
+                        if(sv.getMaSV().equals(svDiemThi.getMaSV()) && !sv.isTrangThai()){
+                            listDiemThi2.add(svDiemThi);
+                        }
                     }
+                }
+            }
+            for(QuanLyDiemThi sv1 : listDiemThi2){
+                if(listDiemThi1.contains(sv1)){
+                    listDiemThi1.remove(sv1);
                 }
             }
             listDiemThi = listDiemThi1;

@@ -6,6 +6,7 @@
 package com.mycompany.btl_java_n9.view;
 
 import com.mycompany.btl_java_n9.view.Panel_Admin.GioiThieu;
+import com.mycompany.btl_java_n9.view.Panel_Admin.HomThu;
 //import com.mycompany.btl_java_n9.view.Panel_Admin.HomThu;
 import com.mycompany.btl_java_n9.view.Panel_Admin.HuongDan;
 import com.mycompany.btl_java_n9.view.Panel_Admin.SuaSV;
@@ -236,8 +237,8 @@ public class View_Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-//        bang.remove(0);
-//        bang.addTab("Hòm Thư", new HomThu());
+      bang.remove(0);
+      bang.addTab("Hòm Thư", new HomThu());
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -253,7 +254,7 @@ public class View_Admin extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         int ch=JOptionPane.showConfirmDialog(this, "Ban có chắc chắn muốn đăng xuất ?");
         if(ch==JOptionPane.YES_OPTION ){
-         //   new DangNhap().setVisible(true);
+            new DangNhap().setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed

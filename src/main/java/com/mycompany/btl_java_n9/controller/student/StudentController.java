@@ -76,7 +76,7 @@ public class StudentController {
         for(int i=0;i<listQl.size();i++){
             if(sv.getMasv().equals(listQl.get(i).getMaSV())){
                 ql=listQl.get(i);
-               
+                //System.out.println("aloe");
             } else {
             }
         }
