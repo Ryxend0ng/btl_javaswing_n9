@@ -351,13 +351,21 @@ public class View_DiemTP extends javax.swing.JPanel {
     private void prevBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevBtnActionPerformed
         // TODO add your handling code here:
         // Giảm k xuống 10 đơn vị
-        k -= 10;
+        list = sinhvienteacherdta.docFileQuanLySV();
+        while(k< list.size()-10){
+            k -= 10;
+            showTable();
+        }
     }//GEN-LAST:event_prevBtnActionPerformed
 
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
         // TODO add your handling code here:
         // Tăng k lên 10 đơn vị
-        k += 10;
+        list = sinhvienteacherdta.docFileQuanLySV();
+        while(k>0){
+            k += 10;
+            showTable();
+        }
     }//GEN-LAST:event_nextBtnActionPerformed
 
     private void soTietNghiTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soTietNghiTextFieldActionPerformed

@@ -303,12 +303,19 @@ public class View_DiemThi extends javax.swing.JPanel {
 
     private void prevBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevBtnActionPerformed
         // TODO add your handling code here:
-        k -= 10;
+        list = sinhvienteacherdta.docFileQuanLyDiemThi();
+        while(k< list.size()-10){
+            k -= 10;
+            showTable();
+        }
     }//GEN-LAST:event_prevBtnActionPerformed
 
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
         // TODO add your handling code here:
-        k += 10;
+        while(k>0){
+            k += 10;
+            showTable();
+        }
     }//GEN-LAST:event_nextBtnActionPerformed
 
 

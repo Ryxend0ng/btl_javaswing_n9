@@ -57,7 +57,4 @@ public class PhanHoi implements  Serializable{
         this.noiDung = noiDung;
     }
 
- 
-    
-    
 }
