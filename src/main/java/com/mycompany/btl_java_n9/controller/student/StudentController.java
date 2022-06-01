@@ -22,6 +22,7 @@ public class StudentController {
     public SinhVien_HoSo getSinhVien(){
         return DangNhap.sv;
     }
+    // Lấy ra bảng điêm sinh viên
     public QuanLySV getBangDiem(){
         SinhVien_HoSo sv=DangNhap.sv;
         QuanLySV ql=null;
@@ -35,6 +36,7 @@ public class StudentController {
         }
         return ql;
     }
+    // Xếp hạng sinh viên
     public int xepHang(){
          SinhVien_HoSo sv=DangNhap.sv;
          int rank=0;
@@ -60,6 +62,8 @@ public class StudentController {
         }
         return rank;
     }
+    
+    // Lấy ra số lượng sinh viên
     public int count(){
          List<QuanLySV> listQl=new SinhVien_TeacherDTA().docFileQuanLySV();
          int count=0;
@@ -69,6 +73,7 @@ public class StudentController {
         }
          return count;
     }
+    // Lấy danh sách điểm thi sinh vien
     public QuanLyDiemThi getQuanLyDiemThi(){
          SinhVien_HoSo sv=DangNhap.sv;
         QuanLyDiemThi ql=null;

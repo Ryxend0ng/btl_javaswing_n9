@@ -35,6 +35,7 @@ public class SuaThongTin extends javax.swing.JPanel {
         initComponents();
         showDl();
     }
+    //Hiển thị thông tin sinh viên
     private void showDl(){
         txtMaSv.setText(ql.getMaSV());
         txtTenSv.setText(ql.getTenSV());
@@ -195,7 +196,8 @@ public class SuaThongTin extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    //Sủa thông tin sinh viên và cập nhật lại thông tin
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try{
