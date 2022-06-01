@@ -86,7 +86,7 @@ public class View_Admin extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(204, 204, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/I_32/icons8-edit-profile-32.png"))); // NOI18N
-        jButton2.setText("Sửa Sinh Viên");
+        jButton2.setText("Thông Tin SV");
         jButton2.setFocusable(false);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -196,9 +196,9 @@ public class View_Admin extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(220, 289, Short.MAX_VALUE)
+                    .addGap(220, 304, Short.MAX_VALUE)
                     .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 101, Short.MAX_VALUE)))
+                    .addGap(0, 117, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

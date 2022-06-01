@@ -111,7 +111,7 @@ public class ThemSV extends javax.swing.JPanel {
         jButton1.setBackground(new java.awt.Color(153, 153, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/I_16/icons8-ok-16.png"))); // NOI18N
-        jButton1.setText("ADD");
+        jButton1.setText("Thêm");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -119,8 +119,9 @@ public class ThemSV extends javax.swing.JPanel {
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 100, -1));
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/I_16/icons8-close-16.png"))); // NOI18N
-        jButton2.setText("Cancel");
+        jButton2.setText("Hủy");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -156,6 +157,11 @@ public class ThemSV extends javax.swing.JPanel {
                 ngaysinhMouseClicked(evt);
             }
         });
+        ngaysinh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ngaysinhActionPerformed(evt);
+            }
+        });
         add(ngaysinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 190, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -172,7 +178,7 @@ public class ThemSV extends javax.swing.JPanel {
     }//GEN-LAST:event_passMouseClicked
 
     private void ngaysinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ngaysinhMouseClicked
-        ngaysinh.selectAll();
+
     }//GEN-LAST:event_ngaysinhMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -195,6 +201,10 @@ public class ThemSV extends javax.swing.JPanel {
           JOptionPane.showMessageDialog(this, "Thêm thành công!");
       }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ngaysinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ngaysinhActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ngaysinhActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

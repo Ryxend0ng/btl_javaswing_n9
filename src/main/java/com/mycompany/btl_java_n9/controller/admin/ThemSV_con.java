@@ -9,11 +9,14 @@ import com.mycompany.btl_java_n9.data_acess.SinhVien_AdminDTA;
 import com.mycompany.btl_java_n9.entity.SinhVien_HoSo;
 import com.sun.org.apache.xalan.internal.xsltc.compiler.util.StringStack;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
@@ -143,26 +146,61 @@ public class ThemSV_con {
     }
     public boolean kiemtraText(JTextField hoten,JTextField pass,JFormattedTextField ngaysinh){
         //Kiem tra xem cac truong da hop le hay chua.
-        int dem=0;
-        try {// bat loi ngay thang sai dinh dang
-         Date date = new SimpleDateFormat("dd/MM/yyyy").parse(ngaysinh.getText());
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ngay sinh khong hp le!");
-            dem=1;
-        }
+        boolean dem = true;
+        
         // bat loi de trong
-        if(hoten.getText().length()==0){
+        String check = hoten.getText();
+            Pattern pattern = Pattern.compile("^[a-zA-Z ]+$");
+            Matcher matcher = pattern.matcher(check);
+            
+        if(!matcher.matches()){
+            JOptionPane.showMessageDialog(null,"Ho ten khong hop le!");
+            dem=false;
+        }
+        else if(hoten.getText().length()==0){
             JOptionPane.showMessageDialog(null, "Trường họ tên không được để trống!");
-            dem=1;
+            dem=false;
         }
         else if(pass.getText().length()==0){
             JOptionPane.showMessageDialog(null, "Trường pass không được để trống!");
-            dem=1;
+            dem=false;
         }
-       
-        if(dem==1){
-            return false;
-        }else return true;
+       try {// bat loi ngay thang sai dinh dang
+         Date date = new SimpleDateFormat("dd/MM/yyyy").parse(ngaysinh.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ngay sinh khong hop le!");
+            dem=false;
+        }
+        if(ktngay(ngaysinh).equals("")==false){
+            JOptionPane.showMessageDialog(null,ktngay(ngaysinh) );
+            dem=false;
+        }
+        if(dem){
+            return true;
+        }else return false;
+    }
+    public String ktngay(JFormattedTextField ngaysinh){
+        String[] str=ngaysinh.getText().split("/");
+        int ngay=Integer.parseInt(str[0]);
+        int thang=Integer.parseInt(str[1]);
+        int nam=Integer.parseInt(str[2]);
+        String check="";
+        if(LocalDate.now().getYear()-nam<=18){
+            check="Lỗi năm quá lớn!"+nam+LocalDate.now().getYear();
+        }
+        else if(ngay>31){
+            check="Loi ngay lớn hơn 31!";
+        }
+        else if(thang==2&&nam%4==0&&ngay>29){
+            check="loi năm nhuận tháng 2 không có ngay 30";
+        }
+        else if(thang==2&&ngay>28){
+          check="loi thang 2 khong co ngay 29";
+        }
+        else if((thang==4||thang==6||thang==8||thang==9||thang==11)&&ngay>30){
+             check="Loi ngay 30!";
+        }
+        return check;
     }
     public void loc_diachi(JComboBox box_dc,JTable bang){// loc du lieu theo dia chi
         String ad=(String) box_dc.getSelectedItem();

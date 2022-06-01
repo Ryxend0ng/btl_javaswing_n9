@@ -5,6 +5,16 @@
  */
 package com.mycompany.btl_java_n9.view.Panel_Admin;
 
+import com.mycompany.btl_java_n9.controller.admin.ThemSV_con;
+import com.mycompany.btl_java_n9.data_acess.AdminNhanPhanHoi_DTA;
+import com.mycompany.btl_java_n9.data_acess.SinhVien_AdminDTA;
+import com.mycompany.btl_java_n9.entity.PhanHoi;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Administrator
@@ -16,6 +26,7 @@ public class HomThu extends javax.swing.JPanel {
      */
     public HomThu() {
         initComponents();
+        setmacdinh();
     }
 
     /**
@@ -27,15 +38,24 @@ public class HomThu extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        bang = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/I_32/icons8-duolingo-logo-32.png"))); // NOI18N
         jLabel1.setText("Hòm Thư");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(301, 25, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        bang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -46,42 +66,106 @@ public class HomThu extends javax.swing.JPanel {
                 "Ma SV", "Nội dung"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(150);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(150);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(150);
+        jScrollPane1.setViewportView(bang);
+        if (bang.getColumnModel().getColumnCount() > 0) {
+            bang.getColumnModel().getColumn(0).setMinWidth(150);
+            bang.getColumnModel().getColumn(0).setPreferredWidth(150);
+            bang.getColumnModel().getColumn(0).setMaxWidth(150);
         }
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(319, 319, 319))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(102, Short.MAX_VALUE))
-        );
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 633, 204));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/I_16/icons8-next-16.png"))); // NOI18N
+        jLabel2.setText("Sắp xếp:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 310, 90, 20));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mới nhất", "Cũ nhất" }));
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 89, 20));
+
+        jButton1.setBackground(new java.awt.Color(153, 153, 255));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/I_16/icons8-info-popup-16.png"))); // NOI18N
+        jButton1.setText("Chi tiết");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 104, -1));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 3, 780, 400));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        if(jComboBox1.getSelectedIndex()==0){
+            setmacdinh();
+        }
+        else{
+            setmacdinh2();
+        }
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ArrayList<PhanHoi>list=(ArrayList<PhanHoi>) new AdminNhanPhanHoi_DTA().docfile();
+        if(new ThemSV_con().dieukiensua(bang)){
+            int ch=bang.getSelectedRow();
+             PhanHoi p=list.get(list.size()-1-ch);
+             jPanel1.removeAll();
+              jPanel1.add(new ChiTietPhanHoi(p), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 400));
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Ban chua chon sinh vien nao!");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable bang;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    private void setmacdinh() {
+        DefaultTableModel model=new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"Ma SV","Lí do","Thời gian"});
+        ArrayList<PhanHoi>list=(ArrayList<PhanHoi>) new AdminNhanPhanHoi_DTA().docfile();
+        Collections.sort(list,new Comparator<PhanHoi>(){
+            @Override
+            public int compare(PhanHoi o1, PhanHoi o2) {
+                return o2.getNgayGui().compareTo(o1.getNgayGui());
+            }
+        
+    });
+        for (PhanHoi p : list) {
+            model.addRow(new String[]{p.getNguoiGui(),p.getNoiDung(),p.getNgayGui()});
+        }
+        bang.setModel(model);
+        }
+    private void setmacdinh2() {
+        DefaultTableModel model=new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"Ma SV","Lí do","Thời gian"});
+        ArrayList<PhanHoi>list=(ArrayList<PhanHoi>) new AdminNhanPhanHoi_DTA().docfile();
+        Collections.sort(list,new Comparator<PhanHoi>(){
+            @Override
+            public int compare(PhanHoi o1, PhanHoi o2) {
+                return o1.getNgayGui().compareTo(o2.getNgayGui());
+            }
+        
+    });
+        for (PhanHoi p : list) {
+            model.addRow(new String[]{p.getNguoiGui(),p.getNoiDung(),p.getNgayGui()});
+        }
+        bang.setModel(model);
+        }
+    
 }

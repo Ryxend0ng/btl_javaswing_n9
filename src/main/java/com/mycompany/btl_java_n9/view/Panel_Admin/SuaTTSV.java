@@ -94,6 +94,7 @@ public class SuaTTSV extends javax.swing.JPanel {
         diachi.setPreferredSize(new java.awt.Dimension(52, 20));
         jPanel1.add(diachi, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 70, 160, 25));
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/I_16/icons8-refresh-16.png"))); // NOI18N
         jButton1.setText("Cập nhật");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -101,10 +102,11 @@ public class SuaTTSV extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 238, 110, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 238, 120, -1));
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/I_16/icons8-close-16.png"))); // NOI18N
-        jButton2.setText("Cancel");
+        jButton2.setText("Hủy");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
