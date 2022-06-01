@@ -108,10 +108,15 @@ public class XoaSV extends javax.swing.JPanel {
         if(new ThemSV_con().dieukiensua(bang)){
             int chon=JOptionPane.showConfirmDialog(this, "Ban co chăc chan muon xoa ?");
             if(chon==JOptionPane.YES_NO_OPTION){
-                int ch=bang.getSelectedRow();
-                list.remove(list.size()-ch-1);
+                int stt=list.size();
+                int[]ch=bang.getSelectedRows();
+                for (int i : ch) {
+                    list.remove(stt-i-1);
+                    //i=i+1;
+                }
+                
                 new SinhVien_AdminDTA().ghifile(list);
-                JOptionPane.showMessageDialog(this, "Xoa thanh cong!");
+                JOptionPane.showMessageDialog(this,"Xoa thanh cong!");
                 bang.removeAll();
                 new ThemSV_con().dodulieu(bang);
             }

@@ -124,7 +124,7 @@ public class DanhSachSV extends javax.swing.JPanel {
         banght.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 160, -1));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/I_16/icons8-refresh-16.png"))); // NOI18N
-        jButton3.setText("Restart");
+        jButton3.setText("Hoàn tác");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
