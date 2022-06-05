@@ -55,6 +55,7 @@ public class ThemSV extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         lop = new javax.swing.JComboBox<>();
         ngaysinh = new javax.swing.JFormattedTextField();
+        loi = new javax.swing.JLabel();
 
         setToolTipText("");
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -163,6 +164,9 @@ public class ThemSV extends javax.swing.JPanel {
             }
         });
         add(ngaysinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 190, -1));
+
+        loi.setForeground(new java.awt.Color(255, 51, 51));
+        add(loi, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 190, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void khoaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_khoaItemStateChanged
@@ -187,19 +191,26 @@ public class ThemSV extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       if(new ThemSV_con().kiemtraText(hoten, pass, ngaysinh)){
-          SinhVien_HoSo sv=new SinhVien_HoSo();
-          String m=new ThemSV_con().tao_Masv();
-          sv.setMasv(m);
-          sv.setHoten(hoten.getText());
-          sv.setPass(pass.getText());
-          sv.setNgaysinh(ngaysinh.getText());
-          sv.setDiachi((String) diachi.getSelectedItem());
-          sv.setKhoa((String) khoa.getSelectedItem());
-          sv.setLop((String) lop.getSelectedItem());
-          list.add(sv);
-          new SinhVien_AdminDTA().ghifile(list);
-          JOptionPane.showMessageDialog(this, "Thêm thành công!");
+          if(new ThemSV_con().ktngay(ngaysinh).equals("")){
+            SinhVien_HoSo sv=new SinhVien_HoSo();
+            String m=new ThemSV_con().tao_Masv();
+            sv.setMasv(m);
+            sv.setHoten(hoten.getText());
+            sv.setPass(pass.getText());
+            sv.setNgaysinh(ngaysinh.getText());
+            sv.setDiachi((String) diachi.getSelectedItem());
+            sv.setKhoa((String) khoa.getSelectedItem());
+            sv.setLop((String) lop.getSelectedItem());
+            list.add(sv);
+            new SinhVien_AdminDTA().ghifile(list);
+            JOptionPane.showMessageDialog(this, "Thêm thành công!");
+            loi.setText(new ThemSV_con().ktngay(ngaysinh));
+          }
+          else{
+               loi.setText(new ThemSV_con().ktngay(ngaysinh));
+          }
       }
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ngaysinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ngaysinhActionPerformed
@@ -220,6 +231,7 @@ public class ThemSV extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JComboBox<String> khoa;
+    private javax.swing.JLabel loi;
     private javax.swing.JComboBox<String> lop;
     private javax.swing.JFormattedTextField ngaysinh;
     private javax.swing.JTextField pass;

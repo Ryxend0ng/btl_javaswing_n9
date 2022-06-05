@@ -147,10 +147,9 @@ public class ThemSV_con {
     public boolean kiemtraText(JTextField hoten,JTextField pass,JFormattedTextField ngaysinh){
         //Kiem tra xem cac truong da hop le hay chua.
         boolean dem = true;
-        
         // bat loi de trong
         String check = hoten.getText();
-            Pattern pattern = Pattern.compile("^[a-zA-Z ]+$");
+            Pattern pattern = Pattern.compile("[a-zA-Z \\u0080-\\u9fff]*+");
             Matcher matcher = pattern.matcher(check);
             
         if(!matcher.matches()){
@@ -171,10 +170,7 @@ public class ThemSV_con {
             JOptionPane.showMessageDialog(null, "Ngay sinh khong hop le!");
             dem=false;
         }
-        if(ktngay(ngaysinh).equals("")==false){
-            JOptionPane.showMessageDialog(null,ktngay(ngaysinh) );
-            dem=false;
-        }
+        
         if(dem){
             return true;
         }else return false;
@@ -185,20 +181,23 @@ public class ThemSV_con {
         int thang=Integer.parseInt(str[1]);
         int nam=Integer.parseInt(str[2]);
         String check="";
-        if(LocalDate.now().getYear()-nam<=18){
-            check="Lỗi năm quá lớn!"+nam+LocalDate.now().getYear();
+        if(LocalDate.now().getYear()-nam<=0){
+            check="Lỗi( nam<2022 )";
         }
         else if(ngay>31){
-            check="Loi ngay lớn hơn 31!";
+            check="Lỗi ( ngày >31 )";
         }
         else if(thang==2&&nam%4==0&&ngay>29){
-            check="loi năm nhuận tháng 2 không có ngay 30";
+            check="Lỗi (ngày tháng 2-29)";
         }
-        else if(thang==2&&ngay>28){
-          check="loi thang 2 khong co ngay 29";
+        else if(thang==2&&nam%4!=0&&ngay>28){
+          check="Lỗi (ngày tháng 2)";
         }
         else if((thang==4||thang==6||thang==8||thang==9||thang==11)&&ngay>30){
-             check="Loi ngay 30!";
+             check="Lỗi ( tháng (4,6,8,9,11) chi co 30 ngay";
+        }
+        else if(thang<0||thang>12){
+            check="Lỗi (0<thang<13)";
         }
         return check;
     }
