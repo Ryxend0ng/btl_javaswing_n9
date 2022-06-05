@@ -11,6 +11,7 @@ import com.mycompany.btl_java_n9.entity.QuanLySV;
 import com.mycompany.btl_java_n9.entity.SinhVien_HoSo;
 import com.mycompany.btl_java_n9.view.View_Admin;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -125,7 +126,7 @@ public class SuaThongTin extends javax.swing.JPanel {
                 .addContainerGap(42, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(errNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(errNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
         jPanel2Layout.setVerticalGroup(
@@ -208,13 +209,54 @@ public class SuaThongTin extends javax.swing.JPanel {
             Pattern pattern = Pattern.compile("^\\d{1,2}[-|/]\\d{1,2}[-|/]\\d{4}$");
             Matcher matcher = pattern.matcher(checkDate);
             boolean check=true;
+          
         if(!matcher.matches()){
             errNgaySinh.setText("Ngày sinh không đúng định dạng");
+            System.out.println("check");
             check=false;
         }else{
-            
+              String[] dateArr=checkDate.split("/");
+            int day=Integer.parseInt(dateArr[0]);
+            int month=Integer.parseInt(dateArr[1]);
+            int year=Integer.parseInt(dateArr[2]);
+            LocalDate date=null;
+            try{
+                date=LocalDate.parse(checkDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                System.out.println(date);
+                 if(date.isLeapYear()){
+                     if(date.getDayOfMonth()!=day){
+                        errNgaySinh.setText("Năm nhuận tháng 2 chỉ có 29 ngày");
+                        check=false;
+                     }
+                 }else{
+                     if(date.getDayOfMonth()!=day){
+                        errNgaySinh.setText("Năm không nhuận tháng 2 chỉ có 28 ngày");
+                        check=false;
+                    }
+                 }
+           // System.out.println("check"+check);
+           
+            }catch(Exception e){
+                
+              
+                System.out.println(day +" "+month+" "+year);
+                 if(day>12){
+                 errNgaySinh.setText("Tháng không được vượt quá 12 ");
+                  check=false;
+                  System.out.println("check"+check);
+                } 
+                if(month>31){
+                     errNgaySinh.setText("Ngày không được vượt quá 31 ");
+                      check=false;
+                } 
+                if(year>2050){
+                    errNgaySinh.setText("Năm trong khoảng [2000-2050]");
+                     check=false;
+                }
+               
+            }
         }
-       
+        
         if(checkOption==0&&check){
             for(int i=0;i<listsv.size();i++){
                 if(sv.getMasv().equals(listsv.get(i).getMasv())){
@@ -234,10 +276,10 @@ public class SuaThongTin extends javax.swing.JPanel {
                 JOptionPane.showConfirmDialog(null, "Bạn đã sửa thông tin thành công?","Thành công",JOptionPane.DEFAULT_OPTION);
                 clearErr();
             }
-        }else{
-            JOptionPane.showConfirmDialog(null, "Lỗi trong quá trình sửa?","Báo lỗi",JOptionPane.DEFAULT_OPTION);
         }
-        }catch(Exception e){
+        }
+        
+    catch(Exception e){
              JOptionPane.showConfirmDialog(null, "Lỗi trong quá trình sửa?","Báo lỗi",JOptionPane.DEFAULT_OPTION);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
