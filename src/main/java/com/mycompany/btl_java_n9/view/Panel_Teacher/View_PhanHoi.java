@@ -31,14 +31,14 @@ public class View_PhanHoi extends javax.swing.JPanel {
         selectTable();
     }
     
-    public void showTable(){
+    public void showTable(){ // Hiển thị bảng phản hồi
         list = (List<PhanHoi>) gvnph.docfile();
         DefaultTableModel dtm = new DefaultTableModel();
         table.setModel(dtm);
         dtm.addColumn("Mã SV");
         dtm.addColumn("Phản hồi");
         dtm.addColumn("Ngày đăng");
-        if(k < list.size()-10){
+        if(k < list.size()-10){ 
             for(int i=k; i< k+10; k++){
                 PhanHoi a = list.get(i);
                 dtm.addRow(new Object[]{a.getNguoiGui(), a.getNoiDung(), a.getNgayGui()});
@@ -52,7 +52,7 @@ public class View_PhanHoi extends javax.swing.JPanel {
         }
     }
     
-    void selectTable(){
+    void selectTable(){ // Hàm bắt sự kiện chọn bảng
         ListSelectionModel listselectionmodel = table.getSelectionModel();
         listselectionmodel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         listselectionmodel.addListSelectionListener(new ListSelectionListener() {
@@ -204,7 +204,7 @@ public class View_PhanHoi extends javax.swing.JPanel {
 
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
         // TODO add your handling code here:
-        list = (List<PhanHoi>) gvnph.docfile();
+        list = (List<PhanHoi>) gvnph.docfile(); // Đọc dữ liệu từ file
         while(k>0){
             k += 10;
             showTable();
