@@ -352,7 +352,7 @@ public class View_DiemTP extends javax.swing.JPanel {
         // TODO add your handling code here:
         // Giảm k xuống 10 đơn vị
         list = sinhvienteacherdta.docFileQuanLySV();
-        while(k< list.size()-10){
+        while(k>0){
             k -= 10;
             showTable();
         }
@@ -362,7 +362,7 @@ public class View_DiemTP extends javax.swing.JPanel {
         // TODO add your handling code here:
         // Tăng k lên 10 đơn vị
         list = sinhvienteacherdta.docFileQuanLySV();
-        while(k>0){
+        while(k< list.size()-10){
             k += 10;
             showTable();
         }

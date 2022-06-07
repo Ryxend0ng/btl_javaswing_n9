@@ -54,10 +54,10 @@ public class Teacher_Controller {
                 }
             }
 // Kiểm tra xem có sinh viên nào trong danh sách sv do giáo viên quản lí mà không có trong danh sách sv do admin quản lí hay không(trường hợp admin xóa sinh viên)
-            for(QuanLySV sv : list1){
-                if(!listMaSVAdmin.contains(sv.getMaSV())){
+            for(int i=0; i< list1.size(); i++){
+                if(!listMaSVAdmin.contains(list1.get(i).getMaSV())){
 // Xóa sinh viên đó khỏi danh sách sv do giáo viên quản lí
-                    list1.remove(sv);
+                    list1.remove(list1.get(i));
                 }
             }
 // Gán danh sách sinh viên do giáo viên quản lí với danh sách sinh viên sau khi đã chỉnh sửa

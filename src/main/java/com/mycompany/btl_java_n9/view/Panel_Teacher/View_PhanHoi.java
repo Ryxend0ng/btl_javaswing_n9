@@ -196,7 +196,7 @@ public class View_PhanHoi extends javax.swing.JPanel {
     private void prevBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevBtnActionPerformed
         // TODO add your handling code here:
         list = (List<PhanHoi>) gvnph.docfile();
-        while(k< list.size()-10){
+        while(k>0){
             k -= 10;
             showTable();
         }
@@ -205,7 +205,7 @@ public class View_PhanHoi extends javax.swing.JPanel {
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
         // TODO add your handling code here:
         list = (List<PhanHoi>) gvnph.docfile(); // Đọc dữ liệu từ file
-        while(k>0){
+        while(k< list.size()-10){
             k += 10;
             showTable();
         }
