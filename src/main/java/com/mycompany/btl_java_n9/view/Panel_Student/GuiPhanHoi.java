@@ -30,14 +30,15 @@ public class GuiPhanHoi extends javax.swing.JPanel {
      StudentController sc=new StudentController();
     public QuanLySV ql=sc.getBangDiem();
     public SinhVien_HoSo sv=sc.getSinhVien();
-    public List<PhanHoi> listPh=new AdminNhanPhanHoi_DTA().docfile()!=null?new AdminNhanPhanHoi_DTA().docfile():new ArrayList<>();
+    public List<PhanHoi> listPhAd=new AdminNhanPhanHoi_DTA().docfile()!=null?new AdminNhanPhanHoi_DTA().docfile():new ArrayList<>();
+    public List<PhanHoi> listPhTc=new GiaoVienNhanPhanHoi_DTA().docfile()!=null?new GiaoVienNhanPhanHoi_DTA().docfile():new ArrayList<>();
     public DefaultComboBoxModel cb=new DefaultComboBoxModel();
     public GuiPhanHoi() {
         initComponents();
         cb=(DefaultComboBoxModel) txtNguoiNhan.getModel();
         cb.removeAllElements();
         cb.addElement("ADMIN");
-        cb.addElement("Giáo viên");
+        cb.addElement("Giáo Viên");
     }
 
     /**
@@ -149,15 +150,23 @@ public class GuiPhanHoi extends javax.swing.JPanel {
            
            PhanHoi ph=new PhanHoi();
            ph.setNguoiNhan(txtNguoiNhan.getSelectedItem().toString());
-           ph.setNguoiGui(sv.getMasv());
-           ph.setNgayGui(LocalDate.now().toString());
-           ph.setNoiDung(txtLyDo.getText());
-           listPh.add(ph);
             System.out.println(ph.getNguoiNhan());
            if(ph.getNguoiNhan().equals("ADMIN")){
-            new AdminNhanPhanHoi_DTA().ghifile((ArrayList<PhanHoi>)listPh);
-           }else if(ph.getNguoiNhan().equals("Giáo viên")){
-               new GiaoVienNhanPhanHoi_DTA().ghifile((ArrayList<PhanHoi>)listPh);
+                ph.setNguoiNhan(txtNguoiNhan.getSelectedItem().toString());
+                ph.setNguoiGui(sv.getMasv());
+                ph.setNgayGui(LocalDate.now().toString());
+                ph.setNoiDung(txtLyDo.getText());
+                listPhAd.add(ph);
+               
+                new AdminNhanPhanHoi_DTA().ghifile((ArrayList<PhanHoi>)listPhAd);
+           }else if(ph.getNguoiNhan().equals("Giáo Viên")){
+                ph.setNguoiNhan(txtNguoiNhan.getSelectedItem().toString());
+                ph.setNguoiGui(sv.getMasv());
+                ph.setNgayGui(LocalDate.now().toString());
+                ph.setNoiDung(txtLyDo.getText());
+                listPhTc.add(ph);
+
+               new GiaoVienNhanPhanHoi_DTA().ghifile((ArrayList<PhanHoi>)listPhTc);
            }
             JOptionPane.showConfirmDialog(null, "Bạn đã gửi phản hồi thành công?","Thành công",JOptionPane.DEFAULT_OPTION);
             
