@@ -26,7 +26,7 @@ public class XemPhanHoi extends javax.swing.JPanel {
         showDl();
     }
     private void showDl(){
-        model.setColumnIdentifiers(new String[]{"Ngày gửi","Người nhận","Nội dung"});
+        model.setColumnIdentifiers(new String[]{"Ngày gửi","Người nhận","Nội dung gửi"});
         List<PhanHoi> listPhAdmin= new AdminNhanPhanHoi_DTA().docfile();
         List<PhanHoi> listPhTeacher= new GiaoVienNhanPhanHoi_DTA().docfile();
         for (PhanHoi pAdminPhanHoi : listPhAdmin) {
